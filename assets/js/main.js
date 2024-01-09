@@ -1,12 +1,44 @@
-//! counter damit die clearIntervalfunktion erst nach dem ersten durchlauf aufgerufen wird
+
+
+
+
+//!                                     Herzlich Wilkommen
+
+
+//?                                          Projekt 
+//?                                         Wetter API 
+
+
+
+//?                             Präsentation von Cohen & de la Motte
+
+
+
+//      Wie baue ich ein JavaScript um eine Website zu bauen die Daten aus einer Wetter API ausgibt?
+
+
+
+
+
+//!                                       IN 7 SCHRITTEN
+
+
+
+
+
+
+
+
+
+//! SCHRITT 4.1: Counter damit die clearIntervalfunktion erst nach dem ersten durchlauf aufgerufen wird
 let counter = 0   
 
 
-//!definition der onClick Funktion
+//! SCHRITT 1: Definition der onClick Funktion
 const check = () => {
 
 
- //! HTML Elemente
+ //! SCHRITT 2: Speichern der relevanten HTML Elemente
     let input = document.getElementById('input').value
     let cityOutput = document.getElementById('cityName')                           
     let countryOutput = document.getElementById('countryCodeBox')
@@ -22,18 +54,19 @@ const check = () => {
     let coordyOutput = document.getElementById('coordsBox')
 
 
-//! fetch für Wetterdaten aus API
+//! SCHRITT 3: fetch für Wetterdaten aus API
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=4bcea2e105b56117dc4f5cdd3a2391fd`)
 .then((response) => response.json())
 .then((data) => {                                    
 
 
-        //! aufruf der clearInterval Funktion erst nach dem ersten Durchlauf
+        //! SCHRITT 4.2: Aufruf der clearInterval Funktion erst nach dem ersten Durchlauf
         if(counter > 0){clearInterval(refresh)}
 
 
-        //!Variable für Zeit in setInterval Methode alle 1000 millisekunden um jede sekunde zu aktuallisieren
-        refresh = setInterval(() => {                   //? wenn als variable definiert funktioniert es nicht
+        //! SCHRITT 5: Variable für Zeit in setInterval Methode alle 1000 millisekunden 
+        //!    um jede sekunde zu aktuallisieren
+        refresh = setInterval(() => {                   //? wenn als variable definiert funktioniert es nicht WARUM
             let currentdate = new Date()
             let seconds = currentdate.getTime()
             let time = new Date(seconds-3600000+data.timezone*1000).toLocaleTimeString()
@@ -41,11 +74,11 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=4bcea2e1
         },1000)
 
 
-        //! nach dem ersten aufruf dieser Operation wird die clearInterval funktion aufgerufen
+        //! SCHRITT 4.3: nach dem ersten aufruf dieser Operation wird die clearInterval funktion aufgerufen
         counter += 1    
 
 
-        //! variablen in denen die Wetterdaten gespeichert werden 
+        //! SCHRITT 6: Variablen in denen die Wetterdaten gespeichert werden 
         let weatherIcon = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
         let temp = Math.round(data.main.temp - 273.15) + "°"
         let windSpeed = `${data.wind.speed} (${data.wind.deg})`
@@ -60,7 +93,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=4bcea2e1
         let country = data.sys.country
 
 
-        //! Einfügen der entsprechenden Wetterdaten in der HTML
+        //! SCHRITT 7: Einfügen der entsprechenden Wetterdaten in der HTML
         weatherIconOutput.setAttribute("src", weatherIcon)
         cityOutput.innerHTML = `<p>${city}</p>`
         countryOutput.innerHTML = `<p>${country}</p>`
