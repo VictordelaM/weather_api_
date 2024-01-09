@@ -52,8 +52,8 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=4bcea2e1
         let clouds = data.weather[0].description
         let pressure = data.main.pressure + " hpa"
         let humitidy = data.main.humidity + " %"
-        let sunrise = new Date(data.sys.sunrise).toLocaleTimeString()
-        let sunset = new Date(data.sys.sunset).toLocaleTimeString()
+        let sunrise = new Date(data.sys.sunrise*1000).toLocaleTimeString()
+        let sunset = new Date(data.sys.sunset*1000).toLocaleTimeString()
         let coordyX = data.coord.lat
         let coordyY = data.coord.lon
         let city = data.name

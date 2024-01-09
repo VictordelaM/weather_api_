@@ -9,23 +9,23 @@
 /*! Import der Fonts*/
 @font-face {
     font-family: "Roboto_bold";
-    src: url("./assets/fonts/Roboto/Roboto-Bold.ttf");
+    src: url("../fonts/Roboto/Roboto-Bold.ttf");
 }
 
 @font-face {
     font-family: "Roboto_regular";
-    src: url("./assets/fonts/Roboto/Roboto-Regular.ttf");
+    src: url("../fonts/Roboto/Roboto-Regular.ttf");
 }
 
 @font-face {
     font-family: "Roboto_thin";
-    src: url("./assets/fonts/Roboto/Roboto-Thin.ttf");
+    src: url("../fonts/Roboto/Roboto-Thin.ttf");
 }
 
 
 /*! Styling vom geschulten Auge eines Künslters von Welt */
 body {
-    background-image: url("./assets/img/herbstblaetter-fallen-anmutig-und-malen-die-generative-ki-der-naturleinwand.jpg");
+    background-image: url("../img/herbstblaetter-fallen-anmutig-und-malen-die-generative-ki-der-naturleinwand.jpg");
     background-position: center;
     background-size: cover;
     color: white;
